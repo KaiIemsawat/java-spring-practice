@@ -3,6 +3,7 @@ package com.spring.p01_company;
 import com.spring.p01_company.Repositories.UserRepo;
 import com.spring.p01_company.entities.User;
 import org.assertj.core.api.Assertions;
+import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -15,6 +16,7 @@ import java.util.Optional;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(value = false)
 public class UserRepositoryTests {
+
     @Autowired private UserRepo userRepo;
 
     @Test
@@ -51,5 +53,13 @@ public class UserRepositoryTests {
 
         User updatedUser = userRepo.findById(userId).get();
         Assertions.assertThat(updatedUser.getLastname()).isEqualTo("Iem");
+    }
+
+    @Test
+    public void testGetUser() {
+        Integer userId = 2;
+        Optional<User> optionalUser = userRepo.findById(userId);
+        Assertions.assertThat(optionalUser).isPresent();
+        System.out.println(optionalUser.get());
     }
 }
