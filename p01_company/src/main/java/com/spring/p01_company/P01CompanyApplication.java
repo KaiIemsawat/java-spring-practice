@@ -1,13 +1,13 @@
-package com.kai.quickstart;
+package com.spring.p01_company;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class QuickstartApplication {
+public class P01CompanyApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(QuickstartApplication.class, args);
+		SpringApplication.run(P01CompanyApplication.class, args);
 	}
 
 }
