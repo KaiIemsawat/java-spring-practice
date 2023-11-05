@@ -36,7 +36,7 @@ public class UserController {
     public String saveUser(User user, RedirectAttributes ra) {
         userService.save(user);
         // this 'message' needs to match with 'users.html' ->  <div th:if="${message}">
-        ra.addFlashAttribute("message", "New user had been added to database");
+        ra.addFlashAttribute("message", "The user has been saved");
         return "redirect:/users";
     }
 
@@ -48,8 +48,21 @@ public class UserController {
             model.addAttribute("pageTitle", "Edit User (ID : " + id + ")");
             return "users/user_form";
         } catch (UserNotFoundException e) {
-            ra.addFlashAttribute("message", "New user had been added to database");
+            ra.addFlashAttribute("message", e.getMessage());
             return "redirect:/users";
         }
     }
+
+    @GetMapping("/users/delete/{id}")
+    public String deleteUserById(@PathVariable("id") Integer id, RedirectAttributes ra) {
+        try {
+            userService.deleteUserById(id);
+            ra.addFlashAttribute("message", "The user id : " + id + " has been deleted");
+        } catch (UserNotFoundException e) {
+            ra.addFlashAttribute("message", e.getMessage());
+        }
+            return "redirect:/users";
+    }
+
+
 }
