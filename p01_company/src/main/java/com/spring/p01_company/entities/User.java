@@ -22,7 +22,7 @@ public class User {
 
     @NotBlank(message = "firstname is required")
     @Size(min = 2, message = "firstname need at least 2 characters")
-    @Size(max = 25, message = "firstname can't be longer than 25 characters")
+    @Size(max = 50, message = "firstname can't be longer than 25 characters")
     @Column(name = "first_name")
     private String firstname;
 
@@ -31,6 +31,8 @@ public class User {
     @Size(max = 50, message = "lastname can't be longer than 50 characters")
     @Column(name = "last_name")
     private String lastname;
+
+    private boolean enable;
 
     /* SETTERS | GETTERS*/
     public Integer getId() {
@@ -73,7 +75,16 @@ public class User {
         this.lastname = lastname;
     }
 
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
+    }
+
     /* TO STRING */
+
     @Override
     public String toString() {
         return "User{" +
@@ -82,6 +93,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
+                ", enable=" + enable +
                 '}';
     }
 }
