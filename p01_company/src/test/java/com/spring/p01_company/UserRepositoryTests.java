@@ -22,9 +22,9 @@ public class UserRepositoryTests {
     @Test
     public void testAddNew() {
         User user = new User();
-        user.setEmail("titann@email.com");
-        user.setPassword("qqqqqq");
-        user.setFirstname("Titann");
+        user.setEmail("biscuit@email.com");
+        user.setPassword("zzzzzz");
+        user.setFirstname("Biscuit");
         user.setLastname("Hampton");
 
         User savedUser = userRepo.save(user);
@@ -57,9 +57,18 @@ public class UserRepositoryTests {
 
     @Test
     public void testGetUser() {
-        Integer userId = 2;
+        Integer userId = 4;
         Optional<User> optionalUser = userRepo.findById(userId);
         Assertions.assertThat(optionalUser).isPresent();
         System.out.println(optionalUser.get());
+    }
+
+    @Test
+    public void testDeleteUserById() {
+        Integer userId = 4;
+        userRepo.deleteById(userId);
+
+        Optional<User> optionalUser = userRepo.findById(userId);
+        Assertions.assertThat(optionalUser).isNotPresent();
     }
 }
