@@ -5,7 +5,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "category") // optional. By default, the table will be named as the class name
+@Table(
+        name = "category", // optional. By default, the table will be named as the class name
+        uniqueConstraints = {@UniqueConstraint(columnNames = "name")}
+)
 public class Category {
 
     @Id
