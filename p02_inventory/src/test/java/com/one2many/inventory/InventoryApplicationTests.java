@@ -1,10 +1,10 @@
-package com.spring02.one2many;
+package com.one2many.inventory;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class One2manyApplicationTests {
+class InventoryApplicationTests {
 
 	@Test
 	void contextLoads() {

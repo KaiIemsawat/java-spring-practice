@@ -1,13 +1,13 @@
-package com.spring02.one2many;
+package com.one2many.inventory;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class One2manyApplication {
+public class InventoryApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(One2manyApplication.class, args);
+		SpringApplication.run(InventoryApplication.class, args);
 	}
 
 }
