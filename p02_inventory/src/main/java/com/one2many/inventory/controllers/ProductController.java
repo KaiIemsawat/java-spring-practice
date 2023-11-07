@@ -34,6 +34,13 @@ public class ProductController {
     public String p_saveProduct(Product product) {
         prodRepo.save(product);
 
-        return "redirect:/";
+        return "redirect:/products";
+    }
+
+    @GetMapping("/products")
+    public String r_productsList(Model model) {
+        List<Product> productsList = prodRepo.findAll();
+        model.addAttribute("products", productsList);
+        return "products/products";
     }
 }
