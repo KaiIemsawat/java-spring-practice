@@ -20,6 +20,10 @@ public class Category {
     @Column(unique = true)
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
+
     /* GETTERS | SETTERS*/
     public Integer getId() {
         return id;
@@ -37,12 +41,16 @@ public class Category {
         this.name = name;
     }
 
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
     /* CONSTRUCTOR */
     public Category() {}
-    public Category(Integer id, String name) {
-        this.id = id;
-        this.name = name;
-    }
     public Category(String name) {
         this.name = name;
     }
@@ -50,12 +58,25 @@ public class Category {
         this.id = id;
     }
 
+    public Category(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Category(Integer id, String name, Brand brand) {
+        this.id = id;
+        this.name = name;
+        this.brand = brand;
+    }
+
     /* TO STRING */
+
     @Override
     public String toString() {
         return "Category{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", brand=" + brand +
                 '}';
     }
 }
