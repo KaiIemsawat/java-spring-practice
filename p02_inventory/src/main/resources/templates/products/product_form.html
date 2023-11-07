@@ -8,9 +8,15 @@
 </head>
 <body>
     <div class="container text-center">
-        <div>
+        <!-- THYMELEEAF IF/ELSE -->
+        <div th:if="${product.prod_id == null}">
             <h2 class="m-4">
-                Create New Product
+                Create Product
+            </h2>
+        </div>
+        <div th:unless="${product.prod_id == null}">
+            <h2 class="m-4">
+                Edit Product
             </h2>
         </div>
         <div th:if="${message}" class="alert alert-danger text-center">
@@ -19,6 +25,7 @@
         <!-- ${product} comes from "product" in model.addAttribute("product", new Product()) in 'ProductController' -->
         <!-- th:action="@{/products/save}" will have to match with @PostMapping("/products/save") in ProductController -->
         <form th:action="@{/products/save}" th:object="${product}" method="POST" style="max-width: 500px; margin: 0 auto;">
+            <input type="hidden" th:field="*{prod_id}" th:value="${product.prod_id}" />
             <div class="form-group row">
                 <div class="mb-4">
                     <input type="text" th:field="*{prod_name}" class="form-control" required placeholder="Product Name">

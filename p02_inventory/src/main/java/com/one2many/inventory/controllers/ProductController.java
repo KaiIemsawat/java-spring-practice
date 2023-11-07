@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -42,5 +43,17 @@ public class ProductController {
         List<Product> productsList = prodRepo.findAll();
         model.addAttribute("products", productsList);
         return "products/products";
+    }
+
+    @GetMapping("/products/edit/{prod_id}")
+    public String r_editProductForm(@PathVariable("prod_id") Integer prod_id, Model model) {
+        Product product = prodRepo.findById(prod_id).get();
+        model.addAttribute("product", product);
+
+//        Need these lines for 'categories' select dropdown menu
+        List<Category> categoryList = catRepo.findAll();
+        model.addAttribute("categoriesList", categoryList);
+
+        return "products/product_form";
     }
 }
