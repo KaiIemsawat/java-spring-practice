@@ -26,10 +26,7 @@ public class UniversityService {
 //    Find one university
     public University findUniversityById(Long id) {
         Optional<University> optionalUniversity = universityRepo.findById(id);
-        if (optionalUniversity.isPresent()) {
-            return optionalUniversity.get();
-        }
-        else return null;
+        return optionalUniversity.orElseGet(()->null);
     }
 
 //    Update a university

@@ -33,11 +33,6 @@
       <div class="mb-4">
         <label class="col-form-label">Choose one or more categories</label>
         <br>
-<!--        <select th:field="*{categories}" class="form-control" multiple="multiple" required>-->
-<!--          <th:block th:each="cat : ${categories}">-->
-<!--            <option th:text="${cat.name}" th:value="${cat.id}"/>-->
-<!--          </th:block>-->
-<!--        </select>-->
         <input type="checkbox"
             th:each="cat: ${categories}"
             th:text="${cat.name}"

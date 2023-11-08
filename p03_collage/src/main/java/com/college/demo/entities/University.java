@@ -28,10 +28,10 @@ public class University {
     private Integer enrollment;
 
     @NotNull(message = "Must specific whether the university offers online class")
-    private boolean isOnline;
+    private boolean hasOnline;
 
     @NotNull(message = "Must specific whether the university offers in person class")
-    private boolean isInPerson;
+    private boolean hasInPerson;
 
     @NotNull
     @Min(value = 1200, message = "Input university need to be found after 1200 BC")
@@ -88,20 +88,20 @@ public class University {
         this.enrollment = enrollment;
     }
 
-    public boolean isOnline() {
-        return isOnline;
+    public boolean isHasOnline() {
+        return hasOnline;
     }
 
-    public void setOnline(boolean online) {
-        isOnline = online;
+    public void setHasOnline(boolean hasOnline) {
+        this.hasOnline = hasOnline;
     }
 
-    public boolean isInPerson() {
-        return isInPerson;
+    public boolean isHasInPerson() {
+        return hasInPerson;
     }
 
-    public void setInPerson(boolean inPerson) {
-        isInPerson = inPerson;
+    public void setHasInPerson(boolean hasInPerson) {
+        this.hasInPerson = hasInPerson;
     }
 
     public Integer getYearFounded() {
@@ -130,12 +130,13 @@ public class University {
 
     /* ---------- CONSTRUCTORS ---------- */
     public University() {}
-    public University(String university_name, String city, Integer enrollment, boolean isOnline, boolean isInPerson, Integer yearFounded, Date createdAt, Date updatedAt) {
+
+    public University(String university_name, String city, Integer enrollment, boolean hasOnline, boolean hasInPerson, Integer yearFounded, Date createdAt, Date updatedAt) {
         this.university_name = university_name;
         this.city = city;
         this.enrollment = enrollment;
-        this.isOnline = isOnline;
-        this.isInPerson = isInPerson;
+        this.hasOnline = hasOnline;
+        this.hasInPerson = hasInPerson;
         this.yearFounded = yearFounded;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
