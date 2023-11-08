@@ -17,7 +17,8 @@ public class Brand {
     @Size(min = 2, max = 126, message = "Brand name need to be in between 2 and 126 characters")
     private String name;
 
-    @OneToMany(mappedBy = "brand")
+    @OneToMany
+    @JoinColumn(name = "brand_id")
     private List<Category> categories = new ArrayList<>();
 
     /* GETTERS | SETTERS */

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>New Brand Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container text-center">
+   THYMELEEAF IF/ELSE
+  <div th:if="${brand.id == null}">
+    <h2 class="m-4">
+      Create Brand
+    </h2>
+  </div>
+  <div th:unless="${brand.id == null}">
+    <h2 class="m-4">
+      Edit Brand
+    </h2>
+  </div>
+<!--  <div th:if="${message}" class="alert alert-danger text-center">-->
+<!--    [[${message}]]-->
+<!--  </div>-->
+  <!-- ${product} comes from "product" in model.addAttribute("product", new Product()) in 'ProductController' -->
+  <!-- th:action="@{/products/save}" will have to match with @PostMapping("/products/save") in ProductController -->
+  <form th:action="@{/brands/save}" th:object="${brand}" method="POST" style="max-width: 500px; margin: 0 auto;">
+<!--    <input type="hidden" th:field="*{prod_id}" th:value="${brand.id}" />-->
+    <div class="form-group row">
+      <div class="mb-4">
+        <input type="text" th:field="*{name}" class="form-control" required placeholder="Brand Name">
+      </div>
+      <div class="mb-4">
+        <label class="col-form-label">Choose one or more categories</label>
+        <br>
+<!--        <select th:field="*{categories}" class="form-control" multiple="multiple" required>-->
+<!--          <th:block th:each="cat : ${categories}">-->
+<!--            <option th:text="${cat.name}" th:value="${cat.id}"/>-->
+<!--          </th:block>-->
+<!--        </select>-->
+        <input type="checkbox"
+            th:each="cat: ${categories}"
+            th:text="${cat.name}"
+            th:value="${cat.id}"
+            th:field="*{categories}"
+            class="m-2"
+        >
+      </div>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-info">SUBMIT</button>
+      <script>
+          document.querySelector("form").addEventListener("submit", function(event) {
+              const checkboxes = document.querySelectorAll('input[type="checkbox"][name="categories"]');
+              const checkedCheckboxes = Array.from(checkboxes).filter(checkbox => checkbox.checked);
+
+              if (checkedCheckboxes.length === 0) {
+                  event.preventDefault(); // Prevent form submission
+                  alert("Please select at least one category.");
+              }
+          });
+      </script>
+    </div>
+  </form>
+</div>
+</body>
+</html>
