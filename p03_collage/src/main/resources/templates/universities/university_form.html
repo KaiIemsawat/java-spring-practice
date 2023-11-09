@@ -7,48 +7,48 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </head>
 <body>
-<div>
-    <div>
-        <h2>University Form</h2>
-        <a href="/universities" class="btn btn-info">All Universities</a>
-    </div>
-    <form th:action="@{/universities/save}" method="POST" th:object="${university}">
-        <div class="mb-3">
-            <label th:for="${city}" class="form-label">City : </label>
-            <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="text-danger" />
-            <input type="text" th:field="*{city}" class="form-control">
-        </div>
-        <div class="mb-3">
-            <label th:for="${university_name}" class="form-label">Name : </label>
-            <span th:if="${#fields.hasErrors('university_name')}" th:errors="*{university_name}" class="text-danger"/>
-            <input type="text" th:field="*{university_name}" class="form-control">
-        </div>
-        <div class="mb-3">
-            <label th:for="${enrollment}" class="form-label">Enrollment : </label>
-            <span th:if="${#fields.hasErrors('enrollment')}" th:errors="*{enrollment}" class="text-danger"/>
-            <input type="number" th:field="*{enrollment}" min="300" value="300" step="1" class="form-control">
-        </div>
-        <div class="mb-3">
-            <label th:for="${hasOnline}" class="form-label">Has Online Class :</label>
-            <span th:if="${#fields.hasErrors('hasOnline')}" th:errors="*{hasOnline}" class="text-danger"/>
-            <input type="radio" th:field="*{hasOnline}" value="1" /> Yes
-            <input type="radio" th:field="*{hasOnline}" value="0" /> No
-        </div>
-        <div class="mb-3">
-            <label th:for="${hasInPerson}" class="form-label">Has Online Class :</label>
-            <span th:if="${#fields.hasErrors('hasInPerson')}" th:errors="*{hasInPerson}" class="text-danger"/>
-            <input type="radio" th:field="*{hasInPerson}" value="1" /> Yes
-            <input type="radio" th:field="*{hasInPerson}" value="0" /> No
-        </div>
-        <div class="mb-3">
-            <label th:for="${yearFounded}" class="form-label">Year Founded : </label>
-            <span th:if="${#fields.hasErrors('yearFounded')}" th:errors="*{yearFounded}" class="text-danger"/>
-            <input type="number" th:field="*{yearFounded}" min="1200" max="2020" step="1" class="form-control">
-        </div>
+    <div class="m-4">
         <div>
-            <button type="submit" class="btn btn-primary mt-3">SUBMIT</button>
+            <h2>University Form</h2>
+            <a href="/universities" class="btn btn-info my-3">All Universities</a>
         </div>
-    </form>
-</div>
+        <form th:action="@{/universities/save}" method="POST" th:object="${university}">
+            <div class="mb-3">
+                <label th:for="${city}" class="form-label">City : </label>
+                <p th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="text-danger fw-lighter" />
+                <input type="text" th:field="*{city}" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label th:for="${university_name}" class="form-label">Name : </label>
+                <p th:if="${#fields.hasErrors('university_name')}" th:errors="*{university_name}" class="text-danger fw-lighter"/>
+                <input type="text" th:field="*{university_name}" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label th:for="${enrollment}" class="form-label">Enrollment : </label>
+                <p th:if="${#fields.hasErrors('enrollment')}" th:errors="*{enrollment}" class="text-danger fw-lighter"/>
+                <input type="number" th:field="*{enrollment}" min="300" value="300" step="1" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label th:for="${hasOnline}" class="form-label">Has Online Class :</label>
+                <p th:if="${#fields.hasErrors('hasOnline')}" th:errors="*{hasOnline}" class="text-danger fw-lighter"/>
+                <input type="radio" th:field="*{hasOnline}" value="1" /> Yes
+                <input type="radio" th:field="*{hasOnline}" value="0" /> No
+            </div>
+            <div class="mb-3">
+                <label th:for="${hasInPerson}" class="form-label">Has Online Class :</label>
+                <p th:if="${#fields.hasErrors('hasInPerson')}" th:errors="*{hasInPerson}" class="text-dangerfw-lighter"/>
+                <input type="radio" th:field="*{hasInPerson}" value="1" /> Yes
+                <input type="radio" th:field="*{hasInPerson}" value="0" /> No
+            </div>
+            <div class="mb-3">
+                <label th:for="${yearFounded}" class="form-label">Year Founded : </label>
+                <p th:if="${#fields.hasErrors('yearFounded')}" th:errors="*{yearFounded}" class="text-danger fw-lighter"/>
+                <input type="number" th:field="*{yearFounded}" min="1200" max="2020" step="1" class="form-control">
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary mt-3">SUBMIT</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
