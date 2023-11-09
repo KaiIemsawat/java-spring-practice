@@ -23,7 +23,7 @@
             </tr>
             </thead>
             <tbody>
-            <!-- ${products} comes from "categories" in model.addAttribute("products", productsList) in 'ProductController' -->
+            <!-- ${products} comes from "products" in model.addAttribute("products", productsList) in 'ProductController' -->
             <th:block th:each="product : ${products}">
                 <tr>
                     <td>[[${product.prod_id}]]</td>

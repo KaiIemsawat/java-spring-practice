@@ -21,6 +21,13 @@ public class ProductController {
     @Autowired
     private CategoryRepo catRepo;
 
+    @GetMapping("/products")
+    public String r_productsList(Model model) {
+        List<Product> productsList = prodRepo.findAll();
+        model.addAttribute("products", productsList);
+        return "products/products";
+    }
+
     @GetMapping("/products/new")
     public String r_productForm(Model model){
         List<Category> categoryList = catRepo.findAll();
@@ -36,13 +43,6 @@ public class ProductController {
         prodRepo.save(product);
 
         return "redirect:/products";
-    }
-
-    @GetMapping("/products")
-    public String r_productsList(Model model) {
-        List<Product> productsList = prodRepo.findAll();
-        model.addAttribute("products", productsList);
-        return "products/products";
     }
 
     @GetMapping("/products/edit/{prod_id}")

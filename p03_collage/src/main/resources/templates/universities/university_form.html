@@ -8,7 +8,10 @@
 </head>
 <body>
 <div>
-    <h2>University Form</h2>
+    <div>
+        <h2>University Form</h2>
+        <a href="/universities" class="btn btn-info">All Universities</a>
+    </div>
     <form th:action="@{/universities/save}" method="POST" th:object="${university}">
         <div>
             <label th:for="${city}">City : </label>
@@ -43,7 +46,7 @@
             <input type="number" th:field="*{yearFounded}" min="1200" max="2020" step="1" class="form-control">
         </div>
         <div>
-            <button type="submit" class="btn btn-primary">SUBMIT</button>
+            <button type="submit" class="btn btn-primary mt-3">SUBMIT</button>
         </div>
     </form>
 </div>

@@ -10,6 +10,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class UniversityController {
     @Autowired
@@ -21,7 +23,9 @@ public class UniversityController {
     }
 
     @GetMapping("/universities")
-    public String r_allUniversities() {
+    public String r_allUniversities(Model model) {
+        List<University> universities = universityService.findAllUniversities();
+        model.addAttribute("universities", universities);
         return "universities/universities";
     }
 
