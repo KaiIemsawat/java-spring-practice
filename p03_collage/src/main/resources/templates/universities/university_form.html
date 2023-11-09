@@ -13,36 +13,36 @@
         <a href="/universities" class="btn btn-info">All Universities</a>
     </div>
     <form th:action="@{/universities/save}" method="POST" th:object="${university}">
-        <div>
-            <label th:for="${city}">City : </label>
-            <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></span>
+        <div class="mb-3">
+            <label th:for="${city}" class="form-label">City : </label>
+            <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="text-danger" />
             <input type="text" th:field="*{city}" class="form-control">
         </div>
-        <div>
-            <label th:for="${university_name}">Name : </label>
-            <span th:if="${#fields.hasErrors('university_name')}" th:errors="*{university_name}"></span>
+        <div class="mb-3">
+            <label th:for="${university_name}" class="form-label">Name : </label>
+            <span th:if="${#fields.hasErrors('university_name')}" th:errors="*{university_name}" class="text-danger"/>
             <input type="text" th:field="*{university_name}" class="form-control">
         </div>
-        <div>
-            <label th:for="${enrollment}">Enrollment : </label>
-            <span th:if="${#fields.hasErrors('enrollment')}" th:errors="*{enrollment}"></span>
+        <div class="mb-3">
+            <label th:for="${enrollment}" class="form-label">Enrollment : </label>
+            <span th:if="${#fields.hasErrors('enrollment')}" th:errors="*{enrollment}" class="text-danger"/>
             <input type="number" th:field="*{enrollment}" min="300" value="300" step="1" class="form-control">
         </div>
-        <div>
-            <label th:for="${hasOnline}">Has Online Class :</label>
-            <span th:if="${#fields.hasErrors('hasOnline')}" th:errors="*{hasOnline}"></span>
+        <div class="mb-3">
+            <label th:for="${hasOnline}" class="form-label">Has Online Class :</label>
+            <span th:if="${#fields.hasErrors('hasOnline')}" th:errors="*{hasOnline}" class="text-danger"/>
             <input type="radio" th:field="*{hasOnline}" value="1" /> Yes
             <input type="radio" th:field="*{hasOnline}" value="0" /> No
         </div>
-        <div>
-            <label th:for="${hasInPerson}">Has Online Class :</label>
-            <span th:if="${#fields.hasErrors('hasInPerson')}" th:errors="*{hasInPerson}"></span>
+        <div class="mb-3">
+            <label th:for="${hasInPerson}" class="form-label">Has Online Class :</label>
+            <span th:if="${#fields.hasErrors('hasInPerson')}" th:errors="*{hasInPerson}" class="text-danger"/>
             <input type="radio" th:field="*{hasInPerson}" value="1" /> Yes
             <input type="radio" th:field="*{hasInPerson}" value="0" /> No
         </div>
-        <div>
-            <label th:for="${yearFounded}">Year Founded : </label>
-            <span th:if="${#fields.hasErrors('yearFounded')}" th:errors="*{yearFounded}"></span>
+        <div class="mb-3">
+            <label th:for="${yearFounded}" class="form-label">Year Founded : </label>
+            <span th:if="${#fields.hasErrors('yearFounded')}" th:errors="*{yearFounded}" class="text-danger"/>
             <input type="number" th:field="*{yearFounded}" min="1200" max="2020" step="1" class="form-control">
         </div>
         <div>
