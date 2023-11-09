@@ -23,7 +23,7 @@ public class University {
     @Size(min = 2, max = 126, message = "City name must be in 2-126 characters")
     private String city;
 
-    @NotNull
+    @NotNull(message = "Enrollment must not be empty")
     @Min(value = 300, message = "The number of enrollment need to be over 300")
     private Integer enrollment;
 

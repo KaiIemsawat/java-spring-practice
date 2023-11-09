@@ -9,7 +9,7 @@
 <body>
 <div>
     <h2>University Form</h2>
-    <form action="@{/universities/save}" method="POST" th:object="${university}">
+    <form th:action="@{/universities/save}" method="POST" th:object="${university}">
         <div>
             <label th:for="${city}">City : </label>
             <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></span>
