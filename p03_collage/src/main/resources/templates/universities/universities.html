@@ -30,11 +30,16 @@
                         <td>[[${university.city}]]</td>
                         <td>[[${university.enrollment}]] students</td>
                         <td>
-                            <form th:action="@{'/universities/' + ${university.university_id} + '/delete'}" th:method="delete">
-                                <a th:href="@{'/universities/' + ${university.university_id} + '/edit'}" class="btn btn-warning btn-sm">Edit</a>
-                                <input type="hidden" name="_method" value="delete">
-                                <button th:href="@{'/universities/' + ${university.university_id} + '/delete'}" class="btn btn-danger btn-sm">Delete</button>
-                            </form>
+<!--                            <form th:action="@{'/universities/' + ${university.university_id} + '/delete'}" th:method="delete">-->
+<!--                                &lt;!&ndash; Need to be <a> tag. If not, it will act as delete &ndash;&gt;-->
+<!--                                <a th:href="@{'/universities/' + ${university.university_id} + '/edit'}" class="btn btn-warning btn-sm">Edit</a>-->
+<!--                                <input type="hidden" name="_method" value="delete">-->
+<!--                                &lt;!&ndash; Need to be <button> tag. If not, it will not act as delete &ndash;&gt;-->
+<!--                                <button th:href="@{'/universities/' + ${university.university_id} + '/delete'}" class="btn btn-danger btn-sm">Delete</button>-->
+<!--                            </form>-->
+
+                            <a th:href="@{'/universities/' + ${university.university_id} + '/edit'}" class="btn btn-warning btn-sm">Edit</a>
+                            <a th:href="@{'/universities/' + ${university.university_id} + '/delete'}" class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
                 </th:block>

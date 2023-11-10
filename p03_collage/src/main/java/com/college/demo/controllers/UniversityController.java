@@ -64,7 +64,8 @@ public class UniversityController {
     }
 
 //    Delete a university by id
-    @DeleteMapping("/universities/{university_id}/delete")
+//    @DeleteMapping("/universities/{university_id}/delete") // Use @DeleteMapping if using <button> in <form> with hidden <input>
+    @GetMapping("/universities/{university_id}/delete") // Use @GetMapping if using <a> tag for deleting
     public String p_deleteUniversityById(@PathVariable("university_id") Long university_id) {
         universityService.deleteUniversity(university_id);
         return "redirect:/universities";
