@@ -40,7 +40,7 @@
             </div>
             <div class="mb-3">
                 <label th:for="${hasInPerson}" class="form-label">Has In Person Class :</label>
-                <p th:if="${#fields.hasErrors('hasInPerson')}" th:errors="*{hasInPerson}" class="text-dangerfw-lighter"/>
+                <p th:if="${#fields.hasErrors('hasInPerson')}" th:errors="*{hasInPerson}" class="text-danger fw-lighter"/>
                 <input type="radio" th:field="*{hasInPerson}" value="1" /> Yes
                 <input type="radio" th:field="*{hasInPerson}" value="0" /> No
             </div>
@@ -51,10 +51,10 @@
                        th:field="*{yearFounded}" min="1200" max="2020" step="1" class="form-control">
             </div>
             <div>
-                <button type="submit" class="btn btn-primary my-3">SUBMIT</button>
+                <button type="submit" class="btn btn-primary my-3">SUBMIT UNIVERSITY</button>
             </div>
         </form>
-        <a href="/universities">Back To All Universities</a>
+        <a th:href="@{/universities}" class="me-3">All Universities</a>
     </div>
 </body>
 </html>

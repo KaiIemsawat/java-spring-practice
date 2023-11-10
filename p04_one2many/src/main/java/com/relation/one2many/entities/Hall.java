@@ -35,6 +35,7 @@ public class Hall {
 //    ----- Connecting database -----
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "university_id")
+//    @NotNull(message = "Please select a university")
     private University university;
 
 
@@ -59,11 +60,11 @@ public class Hall {
         this.id = id;
     }
 
-    public String getHall_name() {
+    public String getHallName() {
         return hallName;
     }
 
-    public void setHall_name(String hall_name) {
+    public void setHallName(String hall_name) {
         this.hallName = hall_name;
     }
 
