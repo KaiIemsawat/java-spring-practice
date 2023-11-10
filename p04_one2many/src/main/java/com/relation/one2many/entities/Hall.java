@@ -32,6 +32,12 @@ public class Hall {
     @NotNull(message = "This option need to be selected")
     private Boolean hasLectureRoom;
 
+//    ----- Connecting database -----
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "university_id")
+    private University university;
+
+
     @Column(updatable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
@@ -101,8 +107,21 @@ public class Hall {
         this.updatedAt = updatedAt;
     }
 
+    public University getUniversity() {
+        return university;
+    }
+
+    public void setUniversity(University university) {
+        this.university = university;
+    }
+
     /* ---------- CONSTRUCTORS ---------- */
     public Hall() {}
-
-
+    public Hall(String hallName, Integer floor, Boolean isResidential, Boolean hasLectureRoom, University university) {
+        this.hallName = hallName;
+        this.floor = floor;
+        this.isResidential = isResidential;
+        this.hasLectureRoom = hasLectureRoom;
+        this.university = university;
+    }
 }

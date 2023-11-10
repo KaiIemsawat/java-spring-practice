@@ -5,6 +5,7 @@ import jakarta.validation.constraints.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="universities")
@@ -37,6 +38,11 @@ public class University {
     @Min(value = 1200, message = "Input university need to be found after 1200 BC")
     @Max(value = 2020, message = "University must be founded before 2020 BC")
     private Integer yearFounded;
+
+//    ----- Connecting database -----
+    @OneToMany(mappedBy = "university", fetch = FetchType.LAZY)
+//    mappedBy="thisValue", the value need to match with private ThisValue thisValue on another Entity
+    private List<Hall> halls;
 
     @Column(updatable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -129,17 +135,23 @@ public class University {
         this.updatedAt = updatedAt;
     }
 
+    public List<Hall> getHalls() {
+        return halls;
+    }
+
+    public void setHalls(List<Hall> halls) {
+        this.halls = halls;
+    }
+
     /* ---------- CONSTRUCTORS ---------- */
     public University() {}
-
-    public University(String university_name, String city, Integer enrollment, boolean hasOnline, boolean hasInPerson, Integer yearFounded, Date createdAt, Date updatedAt) {
-        this.universityName = university_name;
+    public University(String universityName, String city, Integer enrollment, boolean hasOnline, boolean hasInPerson, Integer yearFounded, List<Hall> halls) {
+        this.universityName = universityName;
         this.city = city;
         this.enrollment = enrollment;
         this.hasOnline = hasOnline;
         this.hasInPerson = hasInPerson;
         this.yearFounded = yearFounded;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.halls = halls;
     }
 }
