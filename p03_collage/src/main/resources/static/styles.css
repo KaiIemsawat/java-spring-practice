@@ -1,0 +1,5 @@
+tr:hover td {
+background:#3688c212;
+transition-duration: 0.7s;
+transition-property: background-color;
+}

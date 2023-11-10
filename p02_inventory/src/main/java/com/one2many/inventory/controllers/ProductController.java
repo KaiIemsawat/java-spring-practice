@@ -38,13 +38,6 @@ public class ProductController {
         return "products/product_form";
     }
 
-    @PostMapping("/products/save")
-    public String p_saveProduct(Product product) {
-        prodRepo.save(product);
-
-        return "redirect:/products";
-    }
-
     @GetMapping("/products/edit/{prod_id}")
     public String r_editProductForm(@PathVariable("prod_id") Integer prod_id, Model model) {
         Product product = prodRepo.findById(prod_id).get();
@@ -55,6 +48,13 @@ public class ProductController {
         model.addAttribute("categoriesList", categoryList);
 
         return "products/product_form";
+    }
+
+    @PostMapping("/products/save")
+    public String p_saveProduct(Product product) {
+        prodRepo.save(product);
+
+        return "redirect:/products";
     }
 
     @GetMapping("products/delete/{prod_id}")

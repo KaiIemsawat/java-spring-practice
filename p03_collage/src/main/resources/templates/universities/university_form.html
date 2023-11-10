@@ -8,11 +8,14 @@
 </head>
 <body>
     <div class="m-4">
-        <div>
+        <div th:if="${university.university_id == null}">
             <h2>University Form</h2>
-            <a href="/universities" class="btn btn-info my-3">All Universities</a>
+        </div>
+        <div th:unless="${university.university_id == null}">
+            <h2>Edit [[${university.university_name}]]</h2>
         </div>
         <form th:action="@{/universities/save}" method="POST" th:object="${university}">
+            <input type="hidden" th:field="*{university_id}" th:value="${university.university_id}">
             <div class="mb-3">
                 <label th:for="${city}" class="form-label">City : </label>
                 <p th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="text-danger fw-lighter" />
@@ -46,9 +49,10 @@
                 <input type="number" th:field="*{yearFounded}" min="1200" max="2020" step="1" class="form-control">
             </div>
             <div>
-                <button type="submit" class="btn btn-primary mt-3">SUBMIT</button>
+                <button type="submit" class="btn btn-primary my-3">SUBMIT</button>
             </div>
         </form>
+        <a href="/universities">Back To All Universities</a>
     </div>
 </body>
 </html>

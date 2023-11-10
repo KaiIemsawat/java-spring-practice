@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,6 +46,13 @@ public class UniversityController {
         return "universities/university_form";
     }
 
+//    Render edit university form
+    @GetMapping("universities/{university_id}/edit")
+    public String r_editUniversityForm(@PathVariable("university_id") Long university_id, Model model) {
+        model.addAttribute("university", universityService.findUniversityById(university_id));
+        return "universities/university_form";
+    }
+
 //    Save university
     @PostMapping("/universities/save")
     public String p_saveUniversity(@Valid University university, BindingResult result) {
@@ -52,6 +60,13 @@ public class UniversityController {
             return "universities/university_form"; // Do not use 'redirect' !!
         }
         universityService.saveUniversity(university);
+        return "redirect:/universities";
+    }
+
+//    Delete a university by id
+    @DeleteMapping("/universities/{university_id}/delete")
+    public String p_deleteUniversityById(@PathVariable("university_id") Long university_id) {
+        universityService.deleteUniversity(university_id);
         return "redirect:/universities";
     }
 }

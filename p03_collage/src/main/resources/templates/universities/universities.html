@@ -5,12 +5,13 @@
     <title>All Universities</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 <body>
     <div class="container-fluid m-4">
         <h1>Universities</h1>
 
-        <table class="table caption-top">
+        <table class="table caption-top table-striped">
             <caption>Universities List</caption>
             <thead>
                 <tr>
@@ -23,12 +24,18 @@
             </thead>
             <tbody>
                 <th:block th:each="university : ${universities}">
-                    <tr>
+                    <tr class="row-hover">
                         <td>[[${university.university_id}]]</td>
                         <td><a th:href="@{'/universities/' + ${university.university_id}}">[[${university.university_name}]]</a></td>
                         <td>[[${university.city}]]</td>
-                        <td>[[${university.enrollment}]]</td>
-                        <td>Link</td>
+                        <td>[[${university.enrollment}]] students</td>
+                        <td>
+                            <form th:action="@{'/universities/' + ${university.university_id} + '/delete'}" th:method="delete">
+                                <a th:href="@{'/universities/' + ${university.university_id} + '/edit'}" class="btn btn-warning btn-sm">Edit</a>
+                                <input type="hidden" name="_method" value="delete">
+                                <button th:href="@{'/universities/' + ${university.university_id} + '/delete'}" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                 </th:block>
             </tbody>
