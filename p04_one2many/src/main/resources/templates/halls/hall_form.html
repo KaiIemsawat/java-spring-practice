@@ -44,7 +44,7 @@
                 <p th:if="${#fields.hasErrors('university')}" th:errors="*{university}" class="text-danger fw-lighter"/>
                 <select th:field="*{university}" class="form-control" required>
                     <th:block th:each="uni : ${universities}">
-                        <option th:text="${uni.universityName}" th:value="${uni.universityId}"></option>
+                        <option th:text="${uni.universityName}" th:value="${uni.universityId}"/>
                     </th:block>
                 </select>
             </div>

@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>All Halls</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 <body>
+    <div class="container-fluid m-4">
+        <h1>Universities</h1>
 
+        <table class="table caption-top table-striped">
+            <caption>Universities List</caption>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>University</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="hall : ${halls}">
+                <tr class="row-hover">
+                    <td>[[${hall.id}]]</td>
+                    <td>[[${hall.hallName}]]</td>
+                    <td>[[${hall.university.universityName}]]</td>
+                    <td>
+                        <a th:href="@{'/halls/' + ${hall.id}}" class="btn btn-info btn-sm mx-1">View</a>
+                        <a th:href="@{'/halls/' + ${hall.id} + '/edit'}" class="btn btn-warning btn-sm mx-1">Edit</a>
+                        <a th:href="@{'/halls/' + ${hall.id} + '/delete'}" class="btn btn-danger btn-sm mx-1">Delete</a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+        <div>
+            <a th:href="@{/halls/new}" class="btn btn-primary mt-3">Add New Hall</a>
+        </div>
+        <div>
+            <a th:href="@{/universities}" class="btn btn-info mt-3">All Universities</a>
+        </div>
+    </div>
 </body>
 </html>

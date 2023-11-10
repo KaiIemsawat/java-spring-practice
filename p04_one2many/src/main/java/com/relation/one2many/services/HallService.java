@@ -32,4 +32,8 @@ public class HallService {
     public Hall findHallById(Long hallId) {
         return hallRepo.findById(hallId).orElseGet(()-> null);
     }
+
+    public void deleteHallById(Long hallId) {
+        hallRepo.deleteById(hallId);
+    }
 }

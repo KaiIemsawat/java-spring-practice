@@ -24,6 +24,7 @@ public class HallController {
 //    All halls page
     @GetMapping("/halls")
     public String r_allHallPage(Model model) {
+        model.addAttribute("halls", hallService.findAllHalls());
         return "halls/halls";
     }
 
@@ -45,6 +46,8 @@ public class HallController {
 //    Edit Hall Form
     @GetMapping("/halls/{hallId}/edit")
     public String r_editHallForm(Model model, @PathVariable("hallId") Long hallId) {
+        model.addAttribute("hall", hallService.findHallById(hallId));
+        model.addAttribute("universities", universityService.findAllUniversities());
         return "halls/hall_form";
     }
 
@@ -63,6 +66,7 @@ public class HallController {
 //    Delete a Hall by id
     @GetMapping("/halls/{hallId}/delete")
     public String p_deleteHallById(@PathVariable("hallId") Long hallId) {
+        hallService.deleteHallById(hallId);
         return "redirect:/halls";
     }
 
