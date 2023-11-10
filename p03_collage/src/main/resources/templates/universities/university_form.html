@@ -39,7 +39,7 @@
                 <input type="radio" th:field="*{hasOnline}" value="0" /> No
             </div>
             <div class="mb-3">
-                <label th:for="${hasInPerson}" class="form-label">Has Online Class :</label>
+                <label th:for="${hasInPerson}" class="form-label">Has In Person Class :</label>
                 <p th:if="${#fields.hasErrors('hasInPerson')}" th:errors="*{hasInPerson}" class="text-dangerfw-lighter"/>
                 <input type="radio" th:field="*{hasInPerson}" value="1" /> Yes
                 <input type="radio" th:field="*{hasInPerson}" value="0" /> No

@@ -1,4 +1,4 @@
-package com.college.demo.entities;
+package com.relation.one2many.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -13,11 +13,11 @@ public class University {
     /* ---------- ENTITIES ---------- */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long university_id;
+    private Long universityId;
 
     @NotBlank(message = "University name must not be empty")
     @Size(min = 2, max = 126, message = "University name must be in 2-126 characters")
-    private String university_name;
+    private String universityName;
 
     @NotBlank(message = "City name must not be empty")
     @Size(min = 2, max = 126, message = "City name must be in 2-126 characters")
@@ -56,20 +56,21 @@ public class University {
     }
 
     /* ---------- GETTERS | SETTERS ---------- */
-    public Long getUniversity_id() {
-        return university_id;
+
+    public Long getUniversityId() {
+        return universityId;
     }
 
-    public void setUniversity_id(Long university_id) {
-        this.university_id = university_id;
+    public void setUniversityId(Long universityId) {
+        this.universityId = universityId;
     }
 
-    public String getUniversity_name() {
-        return university_name;
+    public String getUniversityName() {
+        return universityName;
     }
 
-    public void setUniversity_name(String university_name) {
-        this.university_name = university_name;
+    public void setUniversityName(String universityName) {
+        this.universityName = universityName;
     }
 
     public String getCity() {
@@ -88,7 +89,6 @@ public class University {
         this.enrollment = enrollment;
     }
 
-//
     public boolean getHasOnline() {
         return hasOnline;
     }
@@ -97,7 +97,6 @@ public class University {
         this.hasOnline = hasOnline;
     }
 
-//
     public boolean getHasInPerson() {
         return hasInPerson;
     }
@@ -134,7 +133,7 @@ public class University {
     public University() {}
 
     public University(String university_name, String city, Integer enrollment, boolean hasOnline, boolean hasInPerson, Integer yearFounded, Date createdAt, Date updatedAt) {
-        this.university_name = university_name;
+        this.universityName = university_name;
         this.city = city;
         this.enrollment = enrollment;
         this.hasOnline = hasOnline;

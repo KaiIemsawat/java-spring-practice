@@ -1,13 +1,12 @@
-package com.college.demo.repositories;
+package com.relation.one2many.repositories;
 
-import com.college.demo.entities.University;
+import com.relation.one2many.entities.University;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface UniversityRepo extends CrudRepository<University, Long> {
     List<University> findAll();
 
+    List<University> findAllByOrderByUniversityNameDesc();
 }
