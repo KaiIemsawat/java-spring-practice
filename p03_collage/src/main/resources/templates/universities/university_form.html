@@ -29,7 +29,8 @@
             <div class="mb-3">
                 <label th:for="${enrollment}" class="form-label">Enrollment : </label>
                 <p th:if="${#fields.hasErrors('enrollment')}" th:errors="*{enrollment}" class="text-danger fw-lighter"/>
-                <input type="number" th:field="*{enrollment}" min="300" value="300" step="1" class="form-control">
+                <input type="number" onkeydown="return event.keyCode !== 69 && event.key !== '+' && event.key !== '-';"
+                       th:field="*{enrollment}" min="300" value="300" step="1" class="form-control">
             </div>
             <div class="mb-3">
                 <label th:for="${hasOnline}" class="form-label">Has Online Class :</label>
@@ -46,7 +47,8 @@
             <div class="mb-3">
                 <label th:for="${yearFounded}" class="form-label">Year Founded : </label>
                 <p th:if="${#fields.hasErrors('yearFounded')}" th:errors="*{yearFounded}" class="text-danger fw-lighter"/>
-                <input type="number" th:field="*{yearFounded}" min="1200" max="2020" step="1" class="form-control">
+                <input type="number" onkeydown="return event.keyCode !== 69 && event.key !== '+' && event.key !== '-';"
+                       th:field="*{yearFounded}" min="1200" max="2020" step="1" class="form-control">
             </div>
             <div>
                 <button type="submit" class="btn btn-primary my-3">SUBMIT</button>
