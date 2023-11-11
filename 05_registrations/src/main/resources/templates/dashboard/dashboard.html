@@ -6,9 +6,13 @@
     <link rel="stylesheet" href="output.css">
 </head>
 <body>
-    <div>
+    <div class="m-4">
         <h1>This is dashboard page</h1>
-        <h4>[[${user.username}]]</h4>
+        <h4 class="mb-3">[[${user.username}]]</h4>
+        <a th:href="@{/logout}" class="text-sm text-white bg-stone-400 focus:ring-4 focus:ring-amber-200 focus:outline-none rounded-lg px-5 py-2.5"
+        >
+            logout
+        </a>
     </div>
 </body>
 </html>

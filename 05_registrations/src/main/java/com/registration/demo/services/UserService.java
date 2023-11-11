@@ -1,5 +1,6 @@
 package com.registration.demo.services;
 
+import com.registration.demo.models.LoginUser;
 import com.registration.demo.models.User;
 import com.registration.demo.repositories.UserRepository;
 import org.mindrot.jbcrypt.BCrypt;
@@ -34,6 +35,24 @@ public class UserService {
             newUser.setPassword(hashedPassword);
             return userRepo.save(newUser);
         }
+    }
+
+    public User loginUser(LoginUser loginUser, BindingResult result) {
+        Optional<User> optionalUser = userRepo.findByEmail(loginUser.getEmail());
+//        Check if email exist
+        if(!optionalUser.isPresent()) {
+            result.rejectValue("email", "NotFound", "Invalid Credentials");
+            result.rejectValue("password", "Matches", "Invalid Credentials");
+            return null; // Stop checking credentials
+        }
+        User thisUser = optionalUser.get();
+//        Check if password is correct
+        if(!BCrypt.checkpw(loginUser.getPassword(), thisUser.getPassword())) {
+            result.rejectValue("email", "Matches", "Invalid Credentials");
+            result.rejectValue("password", "Incorrect", "Invalid Credentials");
+            return null; // Stop checking credentials
+        }
+        return thisUser;
     }
 
 //    Find User by id

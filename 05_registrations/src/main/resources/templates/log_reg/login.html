@@ -6,6 +6,58 @@
     <link rel="stylesheet" href="output.css">
 </head>
 <body>
+<div class="m-4">
+    <form th:action="@{/logging_in}" method="POST" th:object="${user}">
 
+        <!-- EMAIL -->
+        <div class="relative z-0 w-full mb-6 group">
+            <input
+                    type="email"
+                    name="floating_email"
+                    id="floating_email"
+                    th:field="*{email}"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-slate-800 dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" "
+                    required />
+            <label
+                    th:for="${email}"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-slate-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+                Email address
+            </label>
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-sm text-red-800"/>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="relative z-0 w-full mb-6 group">
+            <input
+                    type="password"
+                    name="floating_password"
+                    id="floating_password"
+                    th:field="*{password}"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-slate-800 dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" "
+                    required />
+            <label
+                    th:for="${password}"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-slate-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+                Password
+            </label>
+            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-sm text-red-800"/>
+        </div>
+
+        <button
+                type="submit"
+                class="text-white bg-blue-300 hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-100 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+            Login
+        </button>
+    </form>
+    <div class="mt-3">
+        Need an account? <a th:href="@{/register}" class="text-blue-400">Register here</a>
+    </div>
+
+</div>
 </body>
 </html>
