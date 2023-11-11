@@ -1,6 +1,7 @@
 package com.relation.one2many.services;
 
 import com.relation.one2many.entities.Hall;
+import com.relation.one2many.entities.University;
 import com.relation.one2many.repositories.HallRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

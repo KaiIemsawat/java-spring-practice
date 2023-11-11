@@ -31,6 +31,7 @@ public class HallController {
 //    View one Hall page
     @GetMapping("/halls/{hallId}")
     public String r_viewHall(Model model, @PathVariable("hallId") Long hallId) {
+        model.addAttribute("hall", hallService.findHallById(hallId));
         return "halls/hall";
     }
 

@@ -19,6 +19,7 @@
                     <th>Name</th>
                     <th>City</th>
                     <th>Enrollment</th>
+                    <th>Number of Halls</th>
                     <th></th>
                 </tr>
             </thead>
@@ -29,6 +30,9 @@
                         <td>[[${university.universityName}]]</td>
                         <td>[[${university.city}]]</td>
                         <td>[[${university.enrollment}]] students</td>
+                        <td>[[${university.halls.size()}]]</td>
+                        <!-- can also write as the next line -->
+<!--                        <td th:text="${university.halls.size()}"/>-->
                         <td>
 <!--                            <form th:action="@{'/universities/' + ${university.universityId} + '/delete'}" th:method="delete">-->
 <!--                                &lt;!&ndash; Need to be <a> tag. If not, it will act as delete &ndash;&gt;-->

@@ -1,6 +1,8 @@
 package com.relation.one2many.services;
 
+import com.relation.one2many.entities.Hall;
 import com.relation.one2many.entities.University;
+import com.relation.one2many.repositories.HallRepo;
 import com.relation.one2many.repositories.UniversityRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,7 @@ import java.util.Optional;
 @Service
 public class UniversityService {
 
+    @Autowired private HallRepo hallRepo;
     @Autowired private UniversityRepo universityRepo;
 //    The line above equals to ------------------------
 //    private final UniversityRepo universityRepo;
@@ -43,6 +46,12 @@ public class UniversityService {
 
     //    Delete a university
     public void deleteUniversity(Long id) {
+//        Disconnect each hall from this being deleted 'University'
+        University thisUniversity = this.findUniversityById(id);
+        for(Hall thisHall : thisUniversity.getHalls()) { // loop through each hall in thisUniversity
+            thisHall.setUniversity(null); // disconnect
+            hallRepo.save(thisHall); // update
+        }
         universityRepo.deleteById(id);
     }
 }

@@ -1,6 +1,7 @@
 package com.relation.one2many.controllers;
 
 import com.relation.one2many.entities.University;
+import com.relation.one2many.services.HallService;
 import com.relation.one2many.services.UniversityService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,8 @@ import java.util.List;
 
 @Controller
 public class UniversityController {
-    @Autowired
-    private UniversityService universityService;
+    @Autowired private UniversityService universityService;
+    @Autowired private HallService hallService;
 
     @GetMapping("/")
     public String homeRoute() {
@@ -34,7 +35,8 @@ public class UniversityController {
 //    Render a university
     @GetMapping("/universities/{university_id}")
     public String r_viewUniversity(Model model, @PathVariable("university_id") Long university_id) {
-        model.addAttribute(universityService.findUniversityById(university_id));
+        model.addAttribute("university", universityService.findUniversityById(university_id));
+        model.addAttribute("halls", hallService.findAllHalls());
         return "universities/university";
     }
 
@@ -66,6 +68,7 @@ public class UniversityController {
 //    @DeleteMapping("/universities/{university_id}/delete") // Use @DeleteMapping if using <button> in <form> with hidden <input>
     @GetMapping("/universities/{university_id}/delete") // Use @GetMapping if using <a> tag for deleting
     public String p_deleteUniversityById(@PathVariable("university_id") Long university_id) {
+
         universityService.deleteUniversity(university_id);
         return "redirect:/universities";
     }

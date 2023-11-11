@@ -15,6 +15,13 @@
             <p><span class="fs-4">Offer Online class :</span> [[${university.hasOnline}]]</p>
             <p><span class="fs-4">Offer In Person class :</span> [[${university.hasInPerson}]]</p>
             <p><span class="fs-4">Founded :</span> [[${university.yearFounded}]]</p>
+            <p class="fs-4">List of Halls :</p>
+            <th:block th:each="hall : ${halls}">
+                <ul>
+                    <li th:text="${hall.hallName}"/>
+                </ul>
+            </th:block>
+
             <a href="/universities">Back To All Universities</a>
         </div>
     </div>
