@@ -32,9 +32,8 @@ public class MainController {
     @GetMapping("/dashboard")
     public String r_dashboard(HttpSession session, Model model) {
         Long userId = (Long) session.getAttribute("userId");
-
-
-        model.addAttribute("loggedUser", userService.findUserById(userId));
+        User user = userService.findUserById(userId);
+        model.addAttribute("user", user);
         return "dashboard/dashboard";
     }
 
