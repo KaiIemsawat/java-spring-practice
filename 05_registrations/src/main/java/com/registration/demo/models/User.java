@@ -17,9 +17,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Name can't be empty")
+    @NotBlank(message = "Username can't be empty")
     @Size(min = 2, max = 126, message = "User name need to be in 2-126 characters")
     private String username;
+
+    @NotBlank(message = "First name can't be empty")
+    @Size(min = 2, max = 126, message = "First name need to be in 2-126 characters")
+    private String firstName;
+
+    @NotBlank(message = "Last name can't be empty")
+    @Size(min = 2, max = 126, message = "Last name need to be in 2-126 characters")
+    private String lastName;
 
     @NotBlank(message = "Email can't be empty")
     @Email(message = "Please provide valid email address")
@@ -67,6 +75,22 @@ public class User {
         this.username = username;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -109,8 +133,11 @@ public class User {
 
     /* ---------- CONSTRUCTORS ---------- */
     public User() {}
-    public User(String username, String email, String password, String confirmPassword) {
+
+    public User(String username, String firstName, String lastName, String email, String password, String confirmPassword) {
         this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.confirmPassword = confirmPassword;
