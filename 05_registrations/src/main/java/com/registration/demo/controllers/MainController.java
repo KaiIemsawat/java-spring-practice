@@ -38,6 +38,9 @@ public class MainController {
 
     @GetMapping("/dashboard")
     public String r_dashboard(HttpSession session, Model model) {
+        if (session.getAttribute("id") == null) {
+            return "redirect:/";
+        }
         Long userId = (Long) session.getAttribute("id");
         User user = userService.findUserById(userId);
         model.addAttribute("user", user);
