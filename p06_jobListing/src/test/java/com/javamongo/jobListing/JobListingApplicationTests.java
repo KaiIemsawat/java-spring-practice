@@ -1,10 +1,10 @@
-package com.relation.one2one;
+package com.javamongo.jobListing;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class One2oneApplicationTests {
+class JobListingApplicationTests {
 
 	@Test
 	void contextLoads() {
