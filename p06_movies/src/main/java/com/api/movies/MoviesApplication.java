@@ -1,13 +1,13 @@
-package com.demo.example;
+package com.api.movies;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ExampleApplication {
+public class MoviesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ExampleApplication.class, args);
+		SpringApplication.run(MoviesApplication.class, args);
 	}
 
 }
