@@ -17,7 +17,7 @@ public class Product {
     private String name;
 
     @NotNull(message="Need value input")
-    @DecimalMin(value="49.99", message="Value must be greater than or equal to 49.99")
+    @DecimalMin(value="4.99", message="Value must be greater than or equal to 4.99")
     private Float price;
 
     @ManyToOne

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css}" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Create New Product</title>
+</head>
+<body>
+<div class="container gap-3" style="max-width: 640px; margin: 0 auto;">
+    <div class="text-center">
+        <h1>New Product Form</h1>
+    </div>
+    <form th:action="@{/products/save}" th:object="${product}" method="POST">
+        <div class="mb-3">
+            <label class="form-label">Product Name: </label>
+            <input type="text" th:field="*{name}" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Product Price: </label>
+            <input type="number" step="0.01" th:field="*{price}" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Category: </label>
+            <div class="">
+                <select th:field="*{category}" class="form-control">
+                    <th:block th:each="category : ${listCategories}">
+                        <option th:text="${category.name}" th:value="${category.id}"/>
+                    </th:block>
+                </select>
+            </div>
+        </div>
+
+
+        <button type="submit"  class="btn btn-primary align-self-center">Save Category</button>
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
