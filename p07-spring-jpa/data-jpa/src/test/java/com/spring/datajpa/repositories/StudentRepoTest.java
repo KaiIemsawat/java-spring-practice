@@ -76,4 +76,15 @@ class StudentRepoTest {
             System.out.println("Student : " + element);
         }
     }
+
+    @Test
+    public void printStudentBaseOnGuardianName() {
+        List<Student> studentList = studentRepo.findByGuardianName("Titann");
+
+        int count = 0;
+        for (Student element : studentList) {
+            count++;
+            System.out.println(count + " - " + element);
+        }
+    }
 }
