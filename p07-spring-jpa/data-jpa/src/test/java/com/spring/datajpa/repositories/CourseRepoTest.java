@@ -1,6 +1,7 @@
 package com.spring.datajpa.repositories;
 
 import com.spring.datajpa.entity.Course;
+import com.spring.datajpa.entity.Student;
 import com.spring.datajpa.entity.Teacher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,5 +93,29 @@ class CourseRepoTest {
             count++;
             System.out.println(count + " : " + course);
         }
+    }
+
+    @Test
+    public void saveCourseWithStudentAndTeacher() {
+        Teacher teacher = Teacher.builder()
+                .firstName("This Teacher")
+                .lastName("This Teacher LastName")
+                .build();
+
+        Student student = Student.builder()
+                .firstName("StudentName")
+                .lastName("StudentLastName")
+                .emailId("thisstudent@email.com")
+                .build();
+
+        Course course = Course.builder()
+                .title("This Course Title")
+                .credit(2)
+                .teacher(teacher)
+                .build();
+
+        course.addStudent(student);
+
+        cRepo.save(course);
     }
 }
