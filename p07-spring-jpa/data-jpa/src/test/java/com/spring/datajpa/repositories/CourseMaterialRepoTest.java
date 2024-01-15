@@ -19,12 +19,12 @@ class CourseMaterialRepoTest {
     @Test
     public void saveCourseMaterial() {
         Course course = Course.builder()
-                .title("DSA")
+                .title("Backend")
                 .credit(6)
                 .build();
 
         CourseMaterial courseMaterial = CourseMaterial.builder()
-                .url("www.google.com")
+                .url("www.test-url-3.com")
                 .course(course)
                 .build();
 
@@ -39,4 +39,5 @@ class CourseMaterialRepoTest {
             System.out.println( "Course Material : " + courseMaterial);
         }
     }
+
 }
