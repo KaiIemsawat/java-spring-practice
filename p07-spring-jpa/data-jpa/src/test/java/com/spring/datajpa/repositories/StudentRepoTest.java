@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -53,6 +54,17 @@ class StudentRepoTest {
     public void printAllStudents() {
         List<Student> studentList = studentRepo.findAll();
 
-        System.out.println("Student : " + studentList);
+        for (Student element : studentList) {
+            System.out.println("Student : " + element);
+        }
+    }
+
+    @Test
+    public void printStudentByFirstName() {
+        List<Student> studentList = studentRepo.findByFirstName("Zukk");
+
+        for (Student element : studentList) {
+            System.out.println("Student : " + element);
+        }
     }
 }
