@@ -4,8 +4,11 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-public class Category {
+public class Brand {
 
     /* Models */
     @Id
@@ -17,28 +20,11 @@ public class Category {
     @Size(min = 2, max = 60, message = "Name needs to be 2 to 60 characters")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "brand_id")
-    private Brand brand;
+    @OneToMany(mappedBy = "brand")
+    private List<Category> categories = new ArrayList<>();
 
-    /* Constructors */
-    public Category() {
-    }
+    /* Setters | Getters */
 
-    public Category(Integer id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public Category(Integer id) {
-        this.id = id;
-    }
-
-    public Category(String name) {
-        this.name = name;
-    }
-
-    /* Setters | Getters*/
     public Integer getId() {
         return id;
     }
@@ -55,11 +41,11 @@ public class Category {
         this.name = name;
     }
 
-    public Brand getBrand() {
-        return brand;
+    public List<Category> getCategories() {
+        return categories;
     }
 
-    public void setBrand(Brand brand) {
-        this.brand = brand;
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 }
