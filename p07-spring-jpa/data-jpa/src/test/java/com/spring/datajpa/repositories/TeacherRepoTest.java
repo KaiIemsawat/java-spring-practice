@@ -36,7 +36,7 @@ class TeacherRepoTest {
         Teacher teacher = Teacher.builder()
                 .firstName("TeacherFirstName")
                 .lastName("TeacherLastName")
-                .courses(List.of(courseDBA, courseJava, courseSpring))
+//                .courses(List.of(courseDBA, courseJava, courseSpring))
                 .build();
 
         teacherRepo.save(teacher);
