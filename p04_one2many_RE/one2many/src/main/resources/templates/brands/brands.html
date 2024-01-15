@@ -18,6 +18,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Categories</th>
+                <th></th>
             </thead>
             <tbody>
                 <th:block th:each="brand : ${listBrands}">
@@ -25,6 +26,9 @@
                         <td>[[${brand.id}]]</td>
                         <td>[[${brand.name}]]</td>
                         <td>[[${brand.categories}]]</td>
+                        <td>
+                            <a th:href="@{'/brands/edit/' + ${brand.id}}" class="btn btn-warning">Edit</a>
+                        </td>
                     </tr>
                 </th:block>
             </tbody>
