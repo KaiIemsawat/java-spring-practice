@@ -29,7 +29,9 @@
                         <td>[[${prod.price}]]</td>
                         <td>[[${prod.category.name}]]</td>
                         <td>
-                            <a th:href="@{'/products/edit/' + ${prod.id}}">Edit</a>
+                            <a th:href="@{'/products/edit/' + ${prod.id}}" class="btn btn-warning">Edit</a>
+                            &nbsp;
+                            <a th:href="@{'/products/delete/' + ${prod.id}}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 </th:block>
