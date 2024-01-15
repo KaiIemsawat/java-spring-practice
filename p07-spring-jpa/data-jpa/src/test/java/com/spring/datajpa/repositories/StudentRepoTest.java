@@ -67,4 +67,13 @@ class StudentRepoTest {
             System.out.println("Student : " + element);
         }
     }
+
+    @Test
+    public void printStudentByFirstNameContaining() {
+        List<Student> studentList = studentRepo.findByFirstNameContaining("Zu");
+
+        for (Student element : studentList) {
+            System.out.println("Student : " + element);
+        }
+    }
 }
