@@ -108,4 +108,11 @@ class StudentRepoTest {
 
         System.out.println("Student with specific email : " + student);
     }
+
+    @Test
+    public void printGetStudentByEmailAddressNativeNamedParam() {
+        Student student  = studentRepo.getStudentByEmailAddressNativeNamedParam("zukk@email.com");
+
+        System.out.println("Student with specific email (Use Param) : " + student);
+    }
 }
