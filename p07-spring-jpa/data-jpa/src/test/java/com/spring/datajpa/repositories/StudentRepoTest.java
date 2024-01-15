@@ -87,4 +87,11 @@ class StudentRepoTest {
             System.out.println(count + " - " + element);
         }
     }
+
+    @Test
+    public void printGetStudentByEmailAddress() {
+        Student student = studentRepo.getStudentByEmailAddress("zukk@email.com");
+
+        System.out.println("Student : " + student);
+    }
 }
