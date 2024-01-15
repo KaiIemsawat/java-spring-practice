@@ -115,4 +115,14 @@ class StudentRepoTest {
 
         System.out.println("Student with specific email (Use Param) : " + student);
     }
+
+    @Test
+    public void updateStudentNameByEmailId() {
+        studentRepo.updateStudentNameByEmailId("ZukkZukk", "zukk@email.com");
+
+        List<Student> studentList = studentRepo.findAll();
+        for (Student student : studentList) {
+            System.out.println("Student List : " + student);
+        }
+    }
 }
