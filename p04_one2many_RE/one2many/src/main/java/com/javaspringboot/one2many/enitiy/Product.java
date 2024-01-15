@@ -65,4 +65,12 @@ public class Product {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+    public List<ProductDetails> getProductDetails() {
+        return productDetails;
+    }
+
+    public void setProductDetails(List<ProductDetails> productDetails) {
+        this.productDetails = productDetails;
+    }
 }

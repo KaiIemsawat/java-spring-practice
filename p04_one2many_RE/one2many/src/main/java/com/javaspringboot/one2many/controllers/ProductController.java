@@ -4,6 +4,7 @@ import com.javaspringboot.one2many.enitiy.Category;
 import com.javaspringboot.one2many.enitiy.Product;
 import com.javaspringboot.one2many.repositories.CategoryRepo;
 import com.javaspringboot.one2many.repositories.ProductRepo;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +33,10 @@ public class ProductController {
     }
 
     @PostMapping("/products/save")
-    public String saveProduct(Product product) {
+    public String saveProduct(Product product, HttpServletRequest request) {
+        String[] detailNames = request.getParameterValues("detailName");
+        String[] detailsValues = request.getParameterValues("detailValue");
+
         productRepo.save(product);
 
         return "redirect:/products";
