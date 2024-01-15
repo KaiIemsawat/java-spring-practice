@@ -20,7 +20,8 @@ public class Brand {
     @Size(min = 2, max = 60, message = "Name needs to be 2 to 60 characters")
     private String name;
 
-    @OneToMany(mappedBy = "brand")
+    @OneToMany
+    @JoinColumn(name = "brand_id")
     private List<Category> categories = new ArrayList<>();
 
     /* Setters | Getters */

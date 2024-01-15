@@ -17,7 +17,7 @@
     </div>
 
 
-    <form th:action="@{/brand/save}" th:object="${brand}" method="POST">
+    <form th:action="@{/brands/save}" th:object="${brand}" method="POST">
         <input type="hidden" th:field="*{id}" th:value="${brand.id}">
         <div class="mb-3">
             <label class="form-label">Brand Name:</label>
