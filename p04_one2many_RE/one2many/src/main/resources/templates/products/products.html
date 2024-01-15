@@ -8,7 +8,7 @@
     <title>Products List</title>
 </head>
 <body>
-<div class="container text-center gap-3" style="max-width: 640px; margin: 0 auto;">
+<div class="container text-center gap-3" style="max-width: 820px; margin: 0 auto;">
     <div>
         <h1>Products List</h1>
     </div>
@@ -19,6 +19,7 @@
                 <th>Name</th>
                 <th>Price</th>
                 <th>Category</th>
+                <th></th>
             </thead>
             <tbody>
                 <th:block th:each="prod : ${listProducts}">
@@ -27,6 +28,9 @@
                         <td>[[${prod.name}]]</td>
                         <td>[[${prod.price}]]</td>
                         <td>[[${prod.category.name}]]</td>
+                        <td>
+                            <a th:href="@{'/products/edit/' + ${prod.id}}">Edit</a>
+                        </td>
                     </tr>
                 </th:block>
             </tbody>
