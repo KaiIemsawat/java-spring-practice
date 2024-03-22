@@ -1,5 +1,7 @@
 package com.demo.springbootReact.services;
 
+import com.demo.springbootReact.exceptions.StudentAlreadyExistsException;
+import com.demo.springbootReact.exceptions.StudentNotFoundException;
 import com.demo.springbootReact.models.Student;
 import com.demo.springbootReact.repositories.StudentRepo;
 import lombok.RequiredArgsConstructor;
@@ -30,17 +32,30 @@ public class StudentService implements IStudentService {
 
     @Override
     public Student updateStudent(Student student, Long id) {
-        return null;
+        return studentRepo.findById(id).map(st -> {
+            st.setFirstName(student.getFirstName());
+            st.setLastName(student.getLastName());
+            st.setEmail(student.getEmail());
+            st.setDepartment(student.getDepartment());
+
+            return studentRepo.save(st);
+        }).orElseThrow(
+                () -> new StudentNotFoundException("Sorry, this student could not be found")
+        );
     }
 
     @Override
     public Student getStudentById(Long id) {
-        return null;
+        return studentRepo.findById(id).orElseThrow(
+                () -> new StudentNotFoundException("Sorry, No student found with id : " + id)
+        );
     }
 
     @Override
     public void deleteStudentById(Long id) {
-
+        if (!studentRepo.existsById(id)) {
+            throw new StudentNotFoundException("Sorry, No student found with id : " + id);
+        }
     }
 
     private boolean studentAlreadyExists(String email) {
